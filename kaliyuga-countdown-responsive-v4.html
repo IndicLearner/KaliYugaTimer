@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KaliYuga will end in:</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --radius-md: 0.75rem;
+      --radius-lg: 1.25rem;
+      --radius-xl: 1.75rem;
+      --color-bg: #f7f4ef;
+      --color-surface: rgba(255,255,255,0.76);
+      --color-surface-2: rgba(255,255,255,0.92);
+      --color-border: rgba(66,52,39,0.14);
+      --color-text: #231a12;
+      --color-text-muted: #665d56;
+      --color-primary: #8f6a25;
+      --color-primary-soft: rgba(143,106,37,0.14);
+      --shadow-lg: 0 24px 60px rgba(42, 28, 15, 0.16);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+    [data-theme="dark"] {
+      --color-bg: #120f0b;
+      --color-surface: rgba(33,27,20,0.76);
+      --color-surface-2: rgba(28,23,17,0.94);
+      --color-border: rgba(222,201,171,0.14);
+      --color-text: #f4ecdc;
+      --color-text-muted: #b8aa95;
+      --color-primary: #d3ab59;
+      --color-primary-soft: rgba(211,171,89,0.14);
+      --shadow-lg: 0 28px 70px rgba(0,0,0,0.45);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: var(--space-6);
+      font-family: var(--font-body);
+      background:
+        radial-gradient(circle at top, rgba(211,171,89,0.16), transparent 36%),
+        radial-gradient(circle at bottom, rgba(94,61,18,0.18), transparent 30%),
+        linear-gradient(180deg, #1a1510 0%, var(--color-bg) 100%);
+      color: var(--color-text);
+    }
+    .shell {
+      width: min(980px, 100%);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+    }
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      padding: var(--space-4);
+      border-bottom: 1px solid var(--color-border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+    }
+    .theme-toggle {
+      min-width: 44px;
+      min-height: 44px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface-2);
+      color: var(--color-text);
+      cursor: pointer;
+    }
+    main {
+      padding: clamp(2rem, 4vw, 4rem);
+      display: grid;
+      gap: var(--space-8);
+    }
+    .hero {
+      display: grid;
+      gap: var(--space-4);
+      text-align: center;
+      justify-items: center;
+    }
+    .eyebrow {
+      font-size: var(--text-xs);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: var(--color-primary-soft);
+      border: 1px solid var(--color-border);
+    }
+    h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 8vw, 5.4rem);
+      line-height: 0.95;
+      font-weight: 700;
+      max-width: 10ch;
+    }
+    .subtitle {
+      margin: 0;
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      max-width: 58ch;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-4);
+      align-items: stretch;
+    }
+    .unit {
+      padding: var(--space-6) clamp(0.75rem, 1.5vw, 1.1rem);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      text-align: center;
+      min-width: 0;
+      display: grid;
+      gap: var(--space-3);
+      align-content: center;
+    }
+    .value {
+      display: block;
+      font-size: clamp(1.1rem, 1.8vw, 2.2rem);
+      font-weight: 700;
+      line-height: 0.95;
+      font-variant-numeric: tabular-nums;
+      color: var(--color-text);
+      margin-bottom: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: clip;
+      font-feature-settings: 'tnum' 1;
+    }
+    .unit-years {
+      grid-column: 1 / -1;
+      padding: var(--space-6) clamp(1rem, 2vw, 1.5rem);
+    }
+    .unit-years .value {
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      letter-spacing: -0.05em;
+      overflow: visible;
+    }
+    .label {
+      display: block;
+      font-size: clamp(0.78rem, 1vw, 0.98rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .notes {
+      display: grid;
+      gap: var(--space-3);
+      padding: var(--space-6);
+      border-radius: var(--radius-lg);
+      background: rgba(0,0,0,0.08);
+      border: 1px solid var(--color-border);
+    }
+    .notes p {
+      margin: 0;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+    }
+    .notes strong { color: var(--color-text); }
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .unit-years { grid-column: 1 / -1; }
+    }
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .unit-years, .unit:last-child { grid-column: 1 / -1; }
+      .unit-years .value { font-size: clamp(1.8rem, 8vw, 3rem); }
+    }
+    @media (max-width: 420px) {
+      .grid { grid-template-columns: 1fr; }
+      .unit, .unit-years { padding: var(--space-4) var(--space-3); }
+      .value { font-size: clamp(1.05rem, 8vw, 1.8rem); }
+      .unit-years .value { font-size: clamp(1.6rem, 11vw, 2.3rem); }
+      .label { letter-spacing: 0.05em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <button class="theme-toggle" type="button" aria-label="Switch theme" data-theme-toggle>
+        <span aria-hidden="true">☀</span>
+      </button>
+    </div>
+    <main>
+      <section class="hero">
+        <div class="eyebrow">Realtime traditional countdown</div>
+        <h1>KaliYuga will end in:</h1>
+        <p class="subtitle">
+          A live counter based on the traditional Puranic duration of 432,000 years, starting from 3102 BCE.
+        </p>
+      </section>
+
+      <section class="grid" aria-label="Countdown timer">
+        <article class="unit unit-years"><span class="value" id="years">0</span><span class="label">Years</span></article>
+        <article class="unit"><span class="value" id="months">0</span><span class="label">Months</span></article>
+        <article class="unit"><span class="value" id="hours">0</span><span class="label">Hours</span></article>
+        <article class="unit"><span class="value" id="minutes">0</span><span class="label">Minutes</span></article>
+        <article class="unit"><span class="value" id="seconds">0</span><span class="label">Seconds</span></article>
+      </section>
+
+      <section class="notes">
+        <p><strong>Reference used:</strong> Kali Yuga is commonly described as lasting 432,000 years, beginning in 3102 BCE and ending in 428,899 CE.</p>
+        <p><strong>How it works:</strong> The timer calculates the difference between the visitor's current local time and 1 January 428899 CE, then updates every second.</p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const END = { year: 428899, month: 1, day: 1, hour: 0, minute: 0, second: 0 };
+
+    const els = {
+      years: document.getElementById('years'),
+      months: document.getElementById('months'),
+      hours: document.getElementById('hours'),
+      minutes: document.getElementById('minutes'),
+      seconds: document.getElementById('seconds')
+    };
+
+    function updateThemeIcon() {
+      const root = document.documentElement;
+      const btn = document.querySelector('[data-theme-toggle]');
+      const dark = root.getAttribute('data-theme') === 'dark';
+      btn.innerHTML = dark ? '<span aria-hidden="true">☀</span>' : '<span aria-hidden="true">☾</span>';
+      btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+
+    document.querySelector('[data-theme-toggle]').addEventListener('click', () => {
+      const root = document.documentElement;
+      root.setAttribute('data-theme', root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      updateThemeIcon();
+    });
+    updateThemeIcon();
+
+    function pad(value) {
+      return String(value).padStart(2, '0');
+    }
+
+    function isLeapYear(year) {
+      return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+    }
+
+    function daysInMonth(year, month) {
+      const monthLengths = [31, isLeapYear(year) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+      return monthLengths[month - 1];
+    }
+
+    function calculateRemaining() {
+      const now = new Date();
+      const current = {
+        year: now.getUTCFullYear(),
+        month: now.getUTCMonth() + 1,
+        day: now.getUTCDate(),
+        hour: now.getUTCHours(),
+        minute: now.getUTCMinutes(),
+        second: now.getUTCSeconds()
+      };
+
+      let years = END.year - current.year;
+      let months = END.month - current.month;
+      let days = END.day - current.day;
+      let hours = END.hour - current.hour;
+      let minutes = END.minute - current.minute;
+      let seconds = END.second - current.second;
+
+      if (seconds < 0) {
+        seconds += 60;
+        minutes -= 1;
+      }
+      if (minutes < 0) {
+        minutes += 60;
+        hours -= 1;
+      }
+      if (hours < 0) {
+        hours += 24;
+        days -= 1;
+      }
+      if (days < 0) {
+        let borrowMonth = END.month - 1;
+        let borrowYear = END.year;
+        if (borrowMonth < 1) {
+          borrowMonth = 12;
+          borrowYear -= 1;
+        }
+        days += daysInMonth(borrowYear, borrowMonth);
+        months -= 1;
+      }
+      if (months < 0) {
+        months += 12;
+        years -= 1;
+      }
+
+      return {
+        years: Math.max(0, years),
+        months: Math.max(0, months),
+        hours: Math.max(0, days * 24 + hours),
+        minutes: Math.max(0, minutes),
+        seconds: Math.max(0, seconds)
+      };
+    }
+
+    function render() {
+      const remaining = calculateRemaining();
+      els.years.textContent = remaining.years.toLocaleString('en-IN');
+      els.months.textContent = pad(remaining.months);
+      els.hours.textContent = pad(remaining.hours);
+      els.minutes.textContent = pad(remaining.minutes);
+      els.seconds.textContent = pad(remaining.seconds);
+    }
+
+    render();
+    setInterval(render, 1000);
+  </script>
+</body>
+</html>
